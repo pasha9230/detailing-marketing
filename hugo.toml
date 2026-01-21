@@ -1,0 +1,35 @@
+baseURL = 'https://detailing-marketing.ru/'
+languageCode = 'ru'
+title = 'Detailing Marketing'
+defaultContentLanguage = 'ru'
+enableRobotsTXT = true
+
+[permalinks]
+  blog = '/blog/:contentbasename'
+
+[params]
+  author = 'Малышев Павел'
+  description = 'Блог для владельцев детейлинг-студий: маркетинг, привлечение клиентов, развитие бизнеса'
+  telegram = '@paveldogood'
+
+  [[params.social]]
+    name = 'telegram'
+    url = 'https://t.me/paveldogood'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = 'github'
+
+[outputs]
+  home = []
+  section = ['HTML', 'RSS']
+
+[sitemap]
+  changefreq = 'weekly'
+  priority = 0.5
