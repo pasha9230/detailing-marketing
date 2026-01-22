@@ -33,3 +33,13 @@ enableRobotsTXT = true
 [sitemap]
   changefreq = 'weekly'
   priority = 0.5
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[params.categories]
+  [params.categories.privlechenie-klientov]
+    name = "Привлечение клиентов"
+  [params.categories.razvitie-studii]
+    name = "Развитие детейлинг центра"
