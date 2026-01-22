@@ -1,28 +1,43 @@
 {{ define "main" }}
-<p><a href="/blog/">&larr; Блог</a></p>
+<nav class="breadcrumbs">
+  <a href="/blog/">Блог</a>
+  {{ with .Params.category }}
+  {{ with index $.Site.Params.categories . }}
+   → <a href="/categories/{{ $.Params.category }}/">{{ .name }}</a>
+  {{ end }}
+  {{ end }}
+</nav>
+
 <article>
-  <h1>{{ .Title }}</h1>
-  <p class="author">{{ .Site.Params.author }} · {{ .Date.Format "2 January 2006" }}</p>
+  <header class="article-header">
+    {{ with .Params.category }}
+    {{ with index $.Site.Params.categories . }}
+    <div class="category">{{ .name }}</div>
+    {{ end }}
+    {{ end }}
 
-  {{ with .Params.intro }}
-  <p class="intro">{{ . }}</p>
+    <h1>{{ .Title }}</h1>
+
+    <div class="meta">
+      {{ .Site.Params.author }} · {{ .Date.Format "2 января 2006" }}
+    </div>
+  </header>
+
+  {{ with .Params.cover }}
+  <img class="article-cover" src="{{ . }}" alt="{{ $.Title }}">
   {{ end }}
 
-  {{ .Content }}
-
-  {{ with .Params.sources }}
-  <div class="sources">
-    <h3>Источники</h3>
-    <ul>
-      {{ range . }}
-      <li><a href="{{ .url }}" target="_blank">{{ .title }}</a>{{ with .note }} — {{ . }}{{ end }}</li>
-      {{ end }}
-    </ul>
+  <div class="content">
+    {{ .Content }}
   </div>
-  {{ end }}
+
+  <div class="cta">
+    <p>Вопросы? Обсудим вашу ситуацию</p>
+    <a href="{{ (index .Site.Params.social 0).url }}">Написать в Telegram</a>
+  </div>
 
   <footer>
-    {{ .Date.Format "January 2006" }}
+    {{ .Date.Format "Январь 2006" }}
   </footer>
 </article>
 {{ end }}
