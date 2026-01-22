@@ -1,0 +1,21 @@
+{{ define "main" }}
+<header class="site-header">
+  <h1><a href="/">Detailing Marketing</a></h1>
+  <p class="intro">{{ .Site.Params.description }}</p>
+  <p class="author">Автор: {{ .Site.Params.author }} · <a href="{{ (index .Site.Params.social 0).url }}">Telegram</a></p>
+</header>
+
+<nav class="category-filter">
+  <a href="/blog/">Все</a>
+  {{ $current := .Title }}
+  {{ range $key, $val := .Site.Params.categories }}
+  <a href="/categories/{{ $key }}/"{{ if eq $val.name $current }} class="active"{{ end }}>{{ $val.name }}</a>
+  {{ end }}
+</nav>
+
+<div class="articles">
+  {{ range .Pages.ByDate.Reverse }}
+    {{ partial "card.html" . }}
+  {{ end }}
+</div>
+{{ end }}
