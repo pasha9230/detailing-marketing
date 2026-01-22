@@ -6,5 +6,8 @@
   },
   "framework": "hugo",
   "outputDirectory": "public",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/", "destination": "/blog/", "permanent": true }
+  ]
 }
