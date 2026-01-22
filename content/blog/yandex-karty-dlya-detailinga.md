@@ -2,7 +2,7 @@
 title: "Яндекс.Карты для детейлинга в 2025: что реально работает, а что — миф"
 date: 2025-01-21
 description: "Разбираем актуальные факторы ранжирования в Яндекс.Картах для детейлинг-студий. Без воды — только то, что влияет на позиции."
-cover: ""
+cover: "/images/yandex-karty-cover.jpg"
 category: "privlechenie-klientov"
 categories: ["privlechenie-klientov"]
 tags: ["яндекс карты", "локальное seo", "маркетинг"]

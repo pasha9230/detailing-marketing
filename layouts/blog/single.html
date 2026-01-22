@@ -18,8 +18,12 @@
 
     <h1>{{ .Title }}</h1>
 
+    {{ with .Params.description }}
+    <p class="description">{{ . }}</p>
+    {{ end }}
+
     <div class="meta">
-      {{ .Site.Params.author }} · {{ .Date.Format "2 января 2006" }}
+      {{ $.Date.Format "2 января 2006" }} · {{ $.Site.Params.author }}
     </div>
   </header>
 
