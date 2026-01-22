@@ -1,14 +1,19 @@
 {{ define "main" }}
-<p><a href="/">&larr; sereja.tech</a></p>
-<h1>Блог</h1>
-<p class="intro">{{ .Site.Params.description }}</p>
+<header class="site-header">
+  <h1><a href="/">Detailing Marketing</a></h1>
+  <p class="intro">{{ .Site.Params.description }}</p>
+  <p class="author">Автор: {{ .Site.Params.author }} · <a href="{{ (index .Site.Params.social 0).url }}">Telegram</a></p>
+</header>
 
-<ul class="posts">
+<nav class="category-filter">
+  <a href="/blog/" class="active">Все</a>
+  <a href="/categories/privlechenie-klientov/">Привлечение клиентов</a>
+  <a href="/categories/razvitie-studii/">Развитие студии</a>
+</nav>
+
+<div class="articles">
   {{ range .Pages.ByDate.Reverse }}
-  <li>
-    <span class="date">{{ .Date.Format "2 Jan 2006" }}</span>
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
-  </li>
+    {{ partial "card.html" . }}
   {{ end }}
-</ul>
+</div>
 {{ end }}
