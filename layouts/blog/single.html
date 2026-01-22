@@ -35,13 +35,31 @@
     {{ .Content }}
   </div>
 
-  <div class="cta">
+  <div class="cta" id="cta-block">
     <p>Вопросы? Обсудим вашу ситуацию</p>
-    <a href="{{ (index .Site.Params.social 0).url }}">Написать в Telegram</a>
+    <a href="{{ (index .Site.Params.social 0).url }}" onclick="ym(106364826,'reachGoal','telegram_cta_click'); return true;">Написать в Telegram</a>
   </div>
 
   <footer>
     {{ .Date.Format "Январь 2006" }}
   </footer>
 </article>
+
+<script>
+(function() {
+  var ctaBlock = document.getElementById('cta-block');
+  if (!ctaBlock) return;
+  var ctaSeen = false;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !ctaSeen) {
+        ctaSeen = true;
+        ym(106364826, 'reachGoal', 'scroll_to_cta');
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  observer.observe(ctaBlock);
+})();
+</script>
 {{ end }}
