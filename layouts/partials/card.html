@@ -1,0 +1,24 @@
+<article class="article-card">
+  {{ with .Params.cover }}
+  <a href="{{ $.Permalink }}">
+    <img src="{{ . }}" alt="{{ $.Title }}">
+  </a>
+  {{ end }}
+
+  {{ with .Params.category }}
+  {{ $catName := . }}
+  {{ with index $.Site.Params.categories . }}
+  <div class="category">{{ .name }}</div>
+  {{ else }}
+  <div class="category">{{ $catName }}</div>
+  {{ end }}
+  {{ end }}
+
+  <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+
+  <div class="meta">{{ .Date.Format "2 января 2006" }}</div>
+
+  {{ with .Description }}
+  <p class="excerpt">{{ . | truncate 120 }}</p>
+  {{ end }}
+</article>
